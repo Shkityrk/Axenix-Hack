@@ -59,7 +59,7 @@ docker-compose up --build
 ```
 
 ## Created by ChillGuys
-Подлипалин Виктор (tg @flainberg) - UI/UX Дизайнер
+Подлипалин Виктор (tg @baskhald) - UI/UX Дизайнер
 
 Морев Алексей (tg @Balex777) - Frontend разработчик
 
