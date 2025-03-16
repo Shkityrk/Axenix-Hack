@@ -40,6 +40,9 @@ def check_trains(start, end, date):
 def coords_planes(start, end, date):
     plane = check_planes(start, end, date)
 
+    if plane == {None}:
+        return {None}
+
     start = [plane["airport_data_from"]["latitude"], plane["airport_data_from"]["longitude"]]
     end = [plane["airport_data_to"]["latitude"], plane["airport_data_to"]["longitude"]]
 
@@ -61,6 +64,8 @@ def coords_planes(start, end, date):
 
 def coords_trains(start, end, date):
     train = check_trains(start, end, date)
+    if train == {None}:
+        return {None}
 
     start_name = train["from"]
     end_name = train["to"]
@@ -88,6 +93,8 @@ def get_coords_to_transport_plane(start, end, date, tr_type="car"):
     locator = point_locator.PointLocator(api_locator)
 
     pl = coords_planes(start, end, date)
+    if pl == {None}:
+        return {None}
 
     initial_coords_start = search_obj.get_query(start)
     initial_coords_end = search_obj.get_query(end)
@@ -112,6 +119,8 @@ def get_coords_to_transport_plane(start, end, date, tr_type="car"):
 def get_coords_to_transport_train(start, end, date, tr_type="car"):
     locator = point_locator.PointLocator(api_locator)
     tr = coords_trains(start, end, date)
+    if tr == {None}:
+        return {None}
 
     initial_coords_start = search_obj.get_query(start)
     initial_coords_end = search_obj.get_query(end)
