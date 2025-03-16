@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "axenix-hack"
+version = "0.1.0"
+description = ""
+authors = ["coder2 <coder2@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+requests = "^2.32.3"
+pandas = "^2.2.3"
+rdp = "^0.8"
+booktype = "^1.5"
+geopy = "^2.4.1"
+fastapi = "^0.115.11"
+uvicorn = "^0.34.0"
+dotenv = "^0.9.9"
+python-dotenv = "^1.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
