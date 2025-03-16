@@ -63,8 +63,8 @@ docker-compose up --build
 
 Морев Алексей (tg @Balex777) - Frontend разработчик
 
-Шкитырь Константин (tg @freddiy_jey) - Backend разработчик/DevOps
+Шкитырь Константин (tg @freddiy_jey) - Backend разработчик
 
-Мацегора Дмитрий (tg @qiisqwww) - Backend разработчик/капитан команды
+Мацегора Дмитрий (tg @qiisqwww) - Backend разработчик
 
 Ерофеев Олег (tg @OlegErofeev1) - ML разработчик
