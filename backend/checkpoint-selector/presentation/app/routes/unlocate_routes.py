@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, HTTPException
 
 from checking_without_location import get_coords_to_transport_plane, get_coords_to_transport_train, \
     get_coords_to_transport_car, get_coords_to_transport_bike, get_coords_to_transport_foot
@@ -16,8 +16,13 @@ async def locations():
 
 @unlocate_router.post("/plane")
 async def locate_transport(route: RequestNameDate):
-    result = get_coords_to_transport_plane(route.start, route.end, route.date)
-
+    result = get_coords_to_transport_plane(
+        route.start,
+        route.end,
+        route.date
+    )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
     return result
 
 
@@ -28,6 +33,8 @@ async def locate_transport(request: RequestNameDate):
         request.end,
         request.date
     )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
     return result
 
 
@@ -37,6 +44,8 @@ async def locate_transport(request: RequestName):
         request.start,
         request.end
     )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
 
     return result
 
@@ -47,6 +56,8 @@ async def locate_transport(request: RequestName):
         request.start,
         request.end
     )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
 
     return result
 
@@ -57,5 +68,7 @@ async def locate_transport(request: RequestName):
         request.start,
         request.end
     )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
 
     return result

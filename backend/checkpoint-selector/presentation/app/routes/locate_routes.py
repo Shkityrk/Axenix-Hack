@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Request, HTTPException
 from pydantic import BaseModel
 
 from checking_with_location import (
@@ -20,6 +20,9 @@ async def locate_transport(request: RequestLocationDate):
         request.date
     )
 
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
+
     return result
 
 
@@ -31,6 +34,8 @@ async def locate_transport(request: RequestLocationDate):
         request.date
     )
 
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
     return result
 
 
@@ -41,6 +46,8 @@ async def locate_transport(request: RequestLocation):
         [request.end.latitude, request.end.longitude]
 
     )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
 
     return result
 
@@ -51,6 +58,8 @@ async def locate_transport(request: RequestLocation):
         [request.start.latitude, request.start.longitude],
         [request.end.latitude, request.end.longitude],
     )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
 
     return result
 
@@ -61,5 +70,7 @@ async def locate_transport(request: RequestLocation):
         [request.start.latitude, request.start.longitude],
         [request.end.latitude, request.end.longitude],
     )
+    if result == {None}:
+        raise HTTPException(status_code=422, detail="Invalid route data")
 
     return result
