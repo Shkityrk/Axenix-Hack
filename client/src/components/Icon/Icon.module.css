@@ -1,0 +1,21 @@
+.icon {
+	width: 18px;
+	height: 18px;
+	filter: invert(26%) sepia(94%) saturate(23%) hue-rotate(4deg) brightness(94%) contrast(96%);
+}
+
+.icon:hover {
+	filter: invert(53%) sepia(97%) saturate(2331%) hue-rotate(346deg) brightness(97%) contrast(96%);
+}
+
+.container {
+	width: 24px;
+	height: 24px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.selected {
+	filter: invert(95%) sepia(100%) saturate(19%) hue-rotate(345deg) brightness(106%) contrast(104%);
+}

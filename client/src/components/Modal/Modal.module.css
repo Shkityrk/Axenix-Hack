@@ -1,0 +1,45 @@
+.modal {
+	position: absolute;
+	top: 0;
+	width: 537px;
+	height: 500px;
+	border-radius: 12px;
+	background-color: #fff;
+	right: 50%;
+	top: 50%;
+	transform: translateX(50%) translateY(-50%);
+	z-index: 10000;
+}
+
+.close {
+	background-color: #fff;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	border: none;
+	cursor: pointer;
+}
+
+.image {
+	display: block;
+	margin: 20px auto 0 auto;
+}
+
+.text {
+	margin: 0;
+	font-size: 40px;
+	line-height: 100%;
+	font-weight: 600;
+	text-align: center;
+}
+
+.back {
+	top: 0;
+	right: 0;
+	position: absolute;
+	transition: 0.3s;
+	z-index: 10000;
+	width: calc(100vw - 462px);
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.2);
+}

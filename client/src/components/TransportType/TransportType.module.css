@@ -1,0 +1,25 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+	margin: 13px auto;
+}
+
+.text {
+	margin: 0 6px;
+	font-size: 14px;
+	line-height: 24px;
+	font-weight: 500;
+}
+
+.transportItem {
+	cursor: pointer;
+	display: flex;
+	border-radius: 40px;
+	padding: 4px;
+	transition: 0.3s;
+}
+
+.selected {
+	background-color: #f37022;
+	color: #fff;
+}

@@ -1,0 +1,57 @@
+.dot {
+	width: 12px;
+	height: 12px;
+	border-radius: 6px;
+}
+
+.dot_orange {
+	background-color: #f37022;
+}
+
+.dot_grey {
+	background-color: #4d4d4d;
+}
+
+.input {
+	height: 40px;
+	border: none;
+	border-radius: 8px;
+	background-color: #f6f6f6;
+	padding: 11px;
+	margin-left: 8px;
+}
+
+.input_address {
+	width: 376px;
+}
+.flex_container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 8px auto;
+}
+.button_grey {
+	background-color: #fff;
+	color: #878787;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.button_grey:hover {
+	color: #f37022;
+}
+
+.button_remove {
+	font-size: 16px;
+	color: #4d4d4d;
+	width: 40px;
+	background-color: #fff;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.button_remove:hover {
+	color: #111;
+}
