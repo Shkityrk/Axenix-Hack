@@ -60,7 +60,11 @@ docker-compose up --build
 
 ## Created by ChillGuys
 Подлипалин Виктор (tg @flainberg) - UI/UX Дизайнер
+
 Морев Алексей (tg @Balex777) - Frontend разработчик
+
 Шкитырь Константин (tg @freddiy_jey) - Backend разработчик/DevOps
+
 Мацегора Дмитрий (tg @qiisqwww) - Backend разработчик/капитан команды
+
 Ерофеев Олег (tg @OlegErofeev1) - ML разработчик
