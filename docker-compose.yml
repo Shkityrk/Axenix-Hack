@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  app:
+    build: backend/checkpoint-selector
+    container_name: fastapi_app
+    ports:
+      - "8001:8001"
+    env_file:
+      - ./environment/.checkpoint-selector.env
+    environment:
+      - PYTHONFAULTHANDLER=1
+      - PYTHONUNBUFFERED=1
+      - PYTHONHASHSEED=random
+      - PIP_NO_CACHE_DIR=off
+      - PIP_DISABLE_PIP_VERSION_CHECK=on
+      - PIP_DEFAULT_TIMEOUT=100
+      - POETRY_VERSION=1.5.1
+    volumes:
+      - .:/app
+    working_dir: /app/backend/checkpoint-selector  # <== Меняем рабочую директорию
+    command: ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
