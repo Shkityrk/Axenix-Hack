@@ -18,5 +18,19 @@ services:
       - POETRY_VERSION=1.5.1
     volumes:
       - .:/app
-    working_dir: /app/backend/checkpoint-selector  # <== Меняем рабочую директорию
+    working_dir: /app/backend/checkpoint-selector
     command: ["poetry", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8001"]
+  
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: frontend_app
+    ports:
+      - "5173:5173"
+    command: npm run dev
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    depends_on:
+      - app

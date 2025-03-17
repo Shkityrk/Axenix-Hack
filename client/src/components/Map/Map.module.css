@@ -1,0 +1,9 @@
+.hide {
+	z-index: 10000;
+	position: absolute;
+	bottom: 4px;
+	right: 340px;
+	width: 15px;
+	height: 10px;
+	background-color: #fff;
+}

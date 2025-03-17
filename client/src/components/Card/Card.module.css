@@ -1,0 +1,84 @@
+.card {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	padding: 16px 16px 16px 0;
+	transition: 0.3s;
+}
+
+.card:hover {
+	background-color: #f6f6f6;
+}
+
+.card::before {
+	position: absolute;
+	content: '';
+	width: 4px;
+	height: 100%;
+	top: 0px;
+	background-color: #fff;
+	transition: 0.3s;
+}
+
+.card:hover::before {
+	background-color: #f37022;
+}
+
+.icon {
+	width: 24px;
+	height: 24px;
+}
+
+.title {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 20px;
+	margin: 0;
+}
+
+.distance {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 16px;
+	color: #878787;
+	margin: 4px 0;
+}
+
+.more {
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	color: #f37022;
+	margin: 8px 0;
+}
+
+.more:hover {
+	color: #ea6618;
+}
+
+.result {
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 20px;
+	color: #f37022;
+	margin: 0 0 8px 0;
+	text-align: end;
+}
+
+.column {
+	display: flex;
+	flex-direction: column;
+}
+
+.column_56 {
+	width: 56px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.left {
+	display: flex;
+}

@@ -1,0 +1,157 @@
+.sidebar {
+	width: 462px;
+	height: 100vh;
+	overflow-y: auto;
+}
+
+.logo {
+	width: 100px;
+}
+
+.sidebar_top {
+	padding: 17px 14px 0;
+}
+
+.flex_container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin: 8px auto;
+}
+
+.selection_button {
+	transition: 0.3s;
+	width: 209px;
+	height: 40px;
+	border-radius: 8px;
+	background-color: #fff;
+	border: none;
+	color: #000;
+	font-size: 14px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: 0.3s;
+	border: 0px solid #ffffff;
+}
+
+.selection_button:hover {
+	border: 1px solid #ea6618;
+}
+
+.selected_button {
+	background-color: #f37022;
+	border: 1px solid #f37022;
+	color: #fff;
+}
+
+.selected_button:hover {
+	background-color: #ea6618;
+}
+
+.selected_icon {
+	filter: invert(95%) sepia(100%) saturate(19%) hue-rotate(345deg) brightness(106%) contrast(104%);
+}
+
+.icon {
+	transition: 0.3s;
+	width: 12px;
+	height: 12px;
+	margin: 9px;
+}
+
+.input {
+	height: 40px;
+	border: none;
+	border-radius: 8px;
+	background-color: #f6f6f6;
+	padding: 11px;
+	margin-left: 8px;
+}
+
+.input_address {
+	width: 376px;
+}
+
+.input_people {
+	width: 50%;
+}
+
+.calendar__column {
+	border: 0px solid #e3e1dd;
+	width: 40px;
+	height: 60px;
+	background-color: #e3e1dd;
+	border-radius: 8px;
+	transition: 0.3s;
+}
+
+.calendar__column:hover {
+	border: 1px solid #f37022;
+	background-color: #ffe6dd;
+}
+
+.calendar__text {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 14px;
+	color: #878787;
+	margin: 0;
+}
+.day {
+	width: 50px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.calendar__line {
+	display: flex;
+	align-items: end;
+	justify-content: space-around;
+}
+
+.button {
+	width: 24px;
+	height: 32px;
+	background-color: #4d4d4d;
+	border-radius: 4px;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	position: absolute;
+	z-index: 100;
+	cursor: pointer;
+}
+
+.button_left {
+	top: 50%;
+	transform: translateY(-50%);
+	left: -30px;
+}
+
+.button_right {
+	top: 50%;
+	transform: translateY(-50%) rotate(180deg);
+	right: -30px;
+}
+.carousel {
+	margin: 20px 38px;
+}
+
+.submit {
+	width: 100%;
+	height: 40px;
+	background-color: #f37022;
+	color: #fff;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+.submit:hover {
+	background-color: #ea6618;
+}
