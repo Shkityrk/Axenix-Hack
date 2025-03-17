@@ -23,14 +23,11 @@ function Points() {
 	};
 
 	const handleResetPoints = () => {
-		setPoints([
-			{ lat: 0, lng: 0, address: '' },
-			{ lat: 0, lng: 0, address: '' },
-		]); // Сброс к двум пустым точкам
+		setPoints([]);
 	};
 
 	const handleAddressChange = (index: number, value: string) => {
-		const newPoints = [...initializedPoints]; // Используем initializedPoints
+		const newPoints = [...initializedPoints];
 		newPoints[index].address = value;
 		setPoints(newPoints);
 	};

@@ -3,18 +3,28 @@ import Button from '../Button';
 import Icon from '../Icon';
 import style from './Card.module.css';
 
-function Card() {
+interface CardProps {
+	distance?: number;
+	time?: number;
+	price?: number;
+	type?: string;
+}
+
+function Card(props: CardProps) {
+	const { distance, time, price } = props;
 	const { openModal } = useModal();
 
 	return (
 		<div className={style.card}>
 			<div className={style.left}>
 				<div className={style.column_56}>
-					<Icon src="Car.svg" />
+					<Icon src="Taxi.svg" />
+					<Icon src="Foot.svg" />
+					<Icon src="Plane.svg" />
 				</div>
 				<div className={style.column}>
-					<p className={style.title}>На такси + пешком</p>
-					<span className={style.distance}>71 км</span>
+					<p className={style.title}>Ваш транспорт</p>
+					<span className={style.distance}>{distance} км</span>
 					<a className={style.more} onClick={openModal}>
 						Посмотреть подробнее
 					</a>
@@ -22,8 +32,8 @@ function Card() {
 				</div>
 			</div>
 			<div className={style.column}>
-				<p className={style.result}>1 ч 42 мин</p>
-				<p className={style.result}>58 000 руб.</p>
+				<p className={style.result}>{time} мин</p>
+				<p className={style.result}>{price} руб.</p>
 			</div>
 		</div>
 	);

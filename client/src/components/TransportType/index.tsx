@@ -9,7 +9,7 @@ function TransportType() {
 	const { openModal } = useModal();
 
 	const handleTransportClick = (transport: string) => {
-		if (transport === 'metro') {
+		if (transport === 'metro' || transport === 'bus') {
 			transport = 'hybrid';
 			openModal();
 		}

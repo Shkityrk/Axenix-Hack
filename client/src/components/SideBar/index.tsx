@@ -1,3 +1,4 @@
+// src/components/SideBar.tsx
 import { useEffect, useState } from 'react';
 import Card from '../Card';
 import TransportType from '../TransportType';
@@ -7,27 +8,25 @@ import Points from '../Points';
 import Icon from '../Icon';
 import { ButtonHTMLAttributes } from 'react';
 import { usePoints } from '../../context/PointsContext';
+import { useTransport } from '../../context/TransportContext';
+import { usePath } from '../../context/PathContext';
+import moment from 'moment';
+import { fetchCoordinates } from '../../api/api';
+import { useRoute } from '../../context/RouteContext'; // Импортируем useRoute
+import dayjs from 'dayjs';
 
 type ArrowProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-const data = [{ id: 1 }, { id: 2 }, { id: 3 }];
+export interface WithPath {
+	path: { latitude: number; longitude: number }[];
+}
+
+const data = [{ id: 1 }];
 const options = [
-	{
-		value: '1',
-		label: '1 человек',
-	},
-	{
-		value: '2',
-		label: '2 человека',
-	},
-	{
-		value: '3',
-		label: '3 человека',
-	},
-	{
-		value: 'more',
-		label: 'Более 3-х человек',
-	},
+	{ value: '1', label: '1 человек' },
+	{ value: '2', label: '2 человека' },
+	{ value: '3', label: '3 человека' },
+	{ value: 'more', label: 'Более 3-х человек' },
 ];
 
 const CustomPrevArrow: React.FC<ArrowProps> = (props) => {
@@ -51,7 +50,11 @@ function SideBar() {
 	const [loading, setLoading] = useState(false);
 	const [pageSize, setPageSize] = useState<number>(3);
 	const { points, setPoints } = usePoints();
+	const { setPath } = usePath();
+	const { selectedTransport } = useTransport();
 	const [heights, setHeights] = useState<number[]>([]);
+	const [selectedDate, setSelectedDate] = useState<string | null>(null);
+	const { route, setRoute, calculatePrice } = useRoute(); // Используем контекст
 
 	const initializedPoints =
 		points.length === 0
@@ -65,7 +68,6 @@ function SideBar() {
 		const containerHeight = window.innerHeight;
 		const cardHeight = 150;
 		const newPageSize = Math.floor((containerHeight - 600) / cardHeight);
-		console.log(newPageSize);
 		setPageSize(newPageSize);
 	};
 
@@ -73,7 +75,16 @@ function SideBar() {
 		calculatePageSize();
 	}, []);
 
-	const fetchCoordinates = async () => {
+	const handleDateChange = (date: moment.Moment | null) => {
+		if (date) {
+			const formattedDate = date.format('DD.MM.YYYY');
+			setSelectedDate(formattedDate);
+		} else {
+			setSelectedDate(null);
+		}
+	};
+
+	const handleFetchCoordinates = async () => {
 		setLoading(true);
 		try {
 			const updatedPoints = await Promise.all(
@@ -92,6 +103,23 @@ function SideBar() {
 				})
 			);
 			setPoints(updatedPoints);
+
+			const routeData = await fetchCoordinates({
+				points: updatedPoints,
+				selectedTransport,
+				selectedDate,
+			});
+
+			const price = calculatePrice(routeData.distance_km, selectedTransport);
+
+			// Сохраняем данные о маршруте в контекст
+			setRoute({
+				...routeData,
+				type: selectedTransport,
+				price,
+			});
+
+			setPath(routeData.path);
 		} catch (error) {
 			console.error('Ошибка при получении координат:', error);
 		} finally {
@@ -125,6 +153,8 @@ function SideBar() {
 		setHeights(newHeights);
 	}, []);
 
+	const dateFormat = 'DD.MM.YYYY'; // Новый формат даты
+
 	return (
 		<aside className={style.sidebar}>
 			<div className={style.sidebar_top}>
@@ -137,6 +167,9 @@ function SideBar() {
 					<DatePicker
 						placement={'bottomLeft'}
 						placeholder="Когда"
+						minDate={dayjs()}
+						onChange={handleDateChange}
+						format={dateFormat}
 						style={{
 							width: 211,
 							height: 40,
@@ -159,7 +192,7 @@ function SideBar() {
 						}}
 					/>
 				</div>
-				<button onClick={fetchCoordinates} disabled={loading} className={style.submit}>
+				<button onClick={handleFetchCoordinates} disabled={loading} className={style.submit}>
 					{loading ? 'Загрузка...' : 'Поиск'}
 				</button>
 				<Carousel
@@ -235,7 +268,14 @@ function SideBar() {
 					dataSource={data}
 					renderItem={() => (
 						<List.Item style={{ padding: 0, margin: 0 }}>
-							<Card />
+							{route && (
+								<Card
+									distance={route?.distance_km}
+									time={route?.duration_min}
+									price={route?.price}
+									type="car"
+								/>
+							)}
 						</List.Item>
 					)}
 				/>
